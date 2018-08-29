@@ -27,25 +27,16 @@ question = "How many states and capitals would you like to drill? (select an int
 too_many = "Please select an integer less than %s " % (number_of_states)
 not_an_integer = "That won't work. Please enter an integer between 1 and 50. "
 
-
-# prompt user, check for errors, and respond to user if necessary
-user_choice = None
-
-while user_choice == None:
+while True:
 	try:
-		print_return()
 		user_choice = int(raw_input(question))
 	except ValueError:
-		print_return()
-		print(not_an_integer)
-
-while user_choice > number_of_states:
-	try:
-		print_return()
-		user_choice = int(raw_input(too_many))
-	except ValueError:
-		print_return()
-		print(not_an_integer)
+		print("Please enter an integer.")
+		continue
+	if user_choice > number_of_states:
+		print("Please enter an integer between 1 and 50.")
+	else:
+		break
 
 # define i, set counters to 0
 i = random.sample(range(number_of_states), int(user_choice))
