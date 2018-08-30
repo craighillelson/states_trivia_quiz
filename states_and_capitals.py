@@ -62,3 +62,8 @@ for j in i:
 percentage_correct =  float(correct) / float(user_choice)
 percentage_formatted = "{0:.0%}".format(percentage_correct)
 print("Results: %s correct %s incorrect. %s\n") % (correct, incorrect, percentage_formatted)
+
+# let user know which states need some work
+print("States to brush up on:")
+for states in incorrects:
+	print(states)
