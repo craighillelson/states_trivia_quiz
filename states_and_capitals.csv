@@ -1,51 +1,51 @@
-state,capital
-Alabama,Montgomery
-Alaska,Juneau
-Arizona,Phoenix
-Arkansas,Little Rock
-California,Sacramento
-Colorado,Denver
-Connecticut,Hartford
-Delaware,Dover
-Florida,Tallahassee
-Georgia,Atlanta
-Hawaii,Honolulu
-Idaho,Boise
-Illinois,Springfield
-Indiana,Indianapolis
-Iowa,Des Moines
-Kansas,Topeka
-Kentucky,Frankfort
-Louisiana,Baton Rouge
-Maine,Augusta
-Maryland,Annapolis
-Massachusetts,Boston
-Michigan,Lansing
-Minnesota,St. Paul
-Mississippi,Jackson
-Missouri,Jefferson City
-Montana,Helena
-Nebraska,Lincoln
-Nevada,Carson City
-New Hampshire,Concord
-New Jersey,Trenton
-New Mexico,Santa Fe
-New York,Albany
-North Carolina,Raleigh
-North Dakota,Bismarck
-Ohio,Columbus
-Oklahoma,Oklahoma City
-Oregon,Salem
-Pennsylvania,Harrisburg
-Rhode Island,Providence
-South Carolina,Columbia
-South Dakota,Pierre
-Tennessee,Nashville
-Texas,Austin
-Utah,Salt Lake City
-Vermont,Montpelier
-Virginia,Richmond
-Washington,Olympia
-West Virginia,Charleston
-Wisconsin,Madison
-Wyoming ,Cheyenne
+state,capital,nickname,year founded
+Alabama,Montgomery,The Yellowhammer State,1819
+Alaska,Juneau,The Last Frontier,1959
+Arizona,Phoenix,The Grand Canyon State,1912
+Arkansas,Little Rock,The Natural State,1836
+California,Sacramento,The Golden State,1850
+Colorado,Denver,The Centennial State,1876
+Connecticut,Hartford,The Constitution State,1788
+Delaware,Dover,The First State,1787
+Florida,Tallahassee,The Sunshine State,1845
+Georgia,Atlanta,The Peach State,1788
+Hawaii,Honolulu,The Aloha State,1959
+Idaho,Boise,The Gem State,1890
+Illinois,Springfield,The Prairie State,1818
+Indiana,Indianapolis,The Hoosier State,1816
+Iowa,Des Moines,The Hawkeye State,1846
+Kansas,Topeka,The Sunflower State,1861
+Kentucky,Frankfort,The Bluegrass State,1792
+Louisiana,Baton Rouge,The Pelican State,1812
+Maine,Augusta,The Pine Tree State,1820
+Maryland,Annapolis,The Old Line State,1788
+Massachusetts,Boston,The Bay State,1788
+Michigan,Lansing,Great Lakes State,1837
+Minnesota,St. Paul,The North Star State,1858
+Mississippi,Jackson,The Magnolia State,1817
+Missouri,Jefferson City,The Show-Me State,1821
+Montana,Helena,The Treasure State,1889
+Nebraska,Lincoln,The Cornhusker State,1867
+Nevada,Carson City,The Silver State,1864
+New Hampshire,Concord,The Granite State,1788
+New Jersey,Trenton,The Garden State,1787
+New Mexico,Santa Fe,Land of Enchantment,1912
+New York,Albany,The Empire State,1788
+North Carolina,Raleigh,The Tar Heel State,1789
+North Dakota,Bismarck,The Peace Garden State,1889
+Ohio,Columbus,The Buckeye State,1803
+Oklahoma,Oklahoma City,The Sooner State,1907
+Oregon,Salem,The Beaver State,1859
+Pennsylvania,Harrisburg,The Keystone State,1787
+Rhode Island,Providence,The Ocean State,1790
+South Carolina,Columbia,The Palmetto State,1788
+South Dakota,Pierre,Mount Rushmore State,1889
+Tennessee,Nashville,The Volunteer State,1796
+Texas,Austin,The Lone Star State,1845
+Utah,Salt Lake City,The Beehive State,1896
+Vermont,Montpelier,The Green Mountain State,1791
+Virginia,Richmond,The Old Dominion State,1788
+Washington,Olympia,The Evergreen State,1889
+West Virginia,Charleston,The Mountain State,1863
+Wisconsin,Madison,The Badger State,1848
+Wyoming,Cheyenne,The Equality or Cowboy State,1890

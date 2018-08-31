@@ -9,6 +9,8 @@ def print_return():
 # define lists to be populated later
 states = []
 capitals = []
+nicknames = []
+years_founded = []
 corrects = []
 incorrects = []
 
@@ -18,12 +20,17 @@ with open('states_and_capitals.csv') as f:
 	for row in f_csv:
 		states.append(row['state'])
 		capitals.append(row['capital'])
+		nicknames.append(row['nickname'])
+		years_founded.append(row['year founded'])
 
 # get length of the list of states
 number_of_states = len(states)
 
-# define reponses
+# define questions
+category = "Would you like to drill capitals, nicknames, or years founded? "
 question = "How many states and capitals would you like to drill? (select an integer between 1 and %s) " % (number_of_states)
+
+# define responses
 too_many = "Please select an integer less than %s " % (number_of_states)
 not_an_integer = "That won't work. Please enter an integer between 1 and 50. "
 
