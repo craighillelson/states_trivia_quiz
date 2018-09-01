@@ -11,6 +11,7 @@ states = []
 capitals = []
 nicknames = []
 years_founded = []
+orders = []
 corrects = []
 incorrects = []
 
@@ -22,12 +23,14 @@ with open('states_and_capitals.csv') as f:
 		capitals.append(row['capital'])
 		nicknames.append(row['nickname'])
 		years_founded.append(row['year founded'])
+		orders.append(row['order'])
 
 # get length of the list of states
 number_of_states = len(states)
 
 # define questions
 category = "Would you like to drill capitals, nicknames, or years founded? "
+# question = "How many states would you like to drill in that category? (select an integer between 1 and %s) " % (number_of_states)"
 question = "How many states and capitals would you like to drill? (select an integer between 1 and %s) " % (number_of_states)
 
 # define responses
@@ -74,3 +77,5 @@ print("Results: %s correct %s incorrect. %s\n") % (correct, incorrect, percentag
 print("States to brush up on:")
 for states in incorrects:
 	print(states)
+
+# write results to a text file
