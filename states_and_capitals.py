@@ -79,3 +79,10 @@ for states in incorrects:
 	print(states)
 
 # write results to a text file
+with open('results.txt', 'w') as results:
+	results.write("States to Review"+ "\n")
+	for states in incorrects:
+		results.write(states+ '\n')
+
+# update user
+print("Check 'results.txt' to see where you can improve.")
