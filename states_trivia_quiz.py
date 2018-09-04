@@ -8,6 +8,8 @@ def print_return():
 
 def quiz(a, b):
 	# define variables
+	print(category_header)
+	print_return()
 	correct = 0
 	incorrect = 0
 	# for the number of states the user specified to drill, generate an equal number of random numbers less than 50
@@ -57,7 +59,7 @@ corrects = []
 incorrects = []
 
 # import csv
-with open('states_and_capitals.csv') as f:
+with open('states_trivia.csv') as f:
 	f_csv = csv.DictReader(f)
 	for row in f_csv:
 		capital = row['capital']
@@ -88,10 +90,13 @@ while True:
 	else:
 		if category_choice == 'a':
 			print("you selected %s - capitals") % (category_choice)
+			category_header = "Type the capital of each state."
 		elif category_choice == 'b':
 			print("you selected %s - nicknames") % (category_choice)
+			category_header = "Type the nickname of each state."
 		else:
 			print("you selected %s - years founded") % (category_choice)
+			category_header = "Type the year each state joined the union."
 		break
 
 # prompt user to select how many states they'd like to drill
