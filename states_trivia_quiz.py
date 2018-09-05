@@ -26,9 +26,19 @@ def quiz(a, b):
 			correct = correct + 1
 			corrects.append(state)
 		else:
-			print("Sorry. That's incorrect.\n")
 			incorrect = incorrect + 1
 			incorrects.append(state)
+			while True:
+				see_the_answer_response = str(raw_input(see_the_answer+' (y or n): ')).lower().strip()
+				if see_the_answer_response not in ['y', 'n']:
+					print("invalid choice")
+				# give user the correct answer
+				elif see_the_answer_response == 'y':
+					print("The correct answer is %s") % (b[j])
+					break
+				else:
+					break
+
 	# calculate and format percentage correct
 	percentage_correct =  float(correct) / float(user_choice)
 	percentage_formatted = "{0:.0%}".format(percentage_correct)
@@ -77,6 +87,7 @@ number_of_states = len(states)
 # define questions
 category = "Would you like to drill a - capitals, b - nicknames, or c - years founded? "
 question = "How many states would you like to drill in that category? (select an integer between 1 and %s) " % (number_of_states)
+see_the_answer = "Sorry, that's incorrect. Would you like to see the correct answer?"
 
 # define responses
 too_many = "Please select an integer less than %s " % (number_of_states)
