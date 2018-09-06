@@ -1,6 +1,7 @@
 # imports
 import csv
 import random
+from datetime import date
 
 # define functions
 def print_return():
@@ -45,14 +46,17 @@ def quiz(a, b):
 	print("Results: %s correct %s incorrect. %s\n") % (correct, incorrect, percentage_formatted)
 	
 	# update user with their results. if user got any wrong, write the states missed to a text file
-	with open('results.txt', 'w') as results:
+	today = date.today()
+	today = "%s.txt" % (today)
+	with open(today, 'w') as results:
 		if incorrect > 0:
 			results.write("States to Review"+ "\n")
 			print("States to brush up on:")
 			for states_missed in incorrects:
 				results.write(states_missed+ "\n")
 				print(states_missed)
-			print("Check 'results.txt' to see where you can improve.")
+			print_return()
+			print("Check %s to see where you can improve.") % (today)
 			print_return()
 		else:
 			results.write("Great job!!! 100%")
