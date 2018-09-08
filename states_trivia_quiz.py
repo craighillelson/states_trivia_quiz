@@ -52,6 +52,7 @@ def quiz(a, b):
 	datetime_ts = "%s.txt" % (datetime_ts)
 	with open(datetime_ts, 'w') as results:
 		if incorrect > 0:
+			results.write("Category: "+ quiz_category+ "\n\n")
 			results.write("States to Review"+ "\n")
 			print("States to brush up on:")
 			for states_missed in incorrects:
@@ -108,12 +109,15 @@ while True:
 		if category_choice == 'a':
 			print("you selected %s - capitals") % (category_choice)
 			category_header = "Type the capital of each state."
+			quiz_category = "Capitals"
 		elif category_choice == 'b':
 			print("you selected %s - nicknames") % (category_choice)
 			category_header = "Type the nickname of each state."
+			quiz_category = "Nicknames"
 		else:
 			print("you selected %s - years founded") % (category_choice)
 			category_header = "Type the year each state joined the union."
+			quiz_category = "Year Founded"
 		break
 
 # prompt user to select how many states they'd like to drill
