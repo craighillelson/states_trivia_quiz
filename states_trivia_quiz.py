@@ -82,6 +82,7 @@ with open('states_trivia.csv') as f:
 		capital = row['capital']
 		nickname = row['nickname']
 		year_founded = row['year founded']
+		order = row['order']
 		states.append(row['state'])
 		capitals.append(row['capital'])
 		nicknames.append(row['nickname'])
@@ -92,7 +93,7 @@ with open('states_trivia.csv') as f:
 number_of_states = len(states)
 
 # define questions
-category = "Would you like to drill a - capitals, b - nicknames, or c - years founded? "
+category = "Would you like to drill a - capitals, b - nicknames, c - years founded, or d - order admitted? "
 question = "How many states would you like to drill in that category? (select an integer between 1 and %s) " % (number_of_states)
 see_the_answer = "Sorry, that's incorrect. Would you like to see the correct answer?"
 
@@ -103,7 +104,7 @@ not_an_integer = "That won't work. Please enter an integer between 1 and 50. "
 # prompt user to select a category
 while True:
 	category_choice = str(raw_input(category)).lower().strip()
-	if category_choice not in ['a', 'b', 'c']:
+	if category_choice not in ['a', 'b', 'c', 'd']:
 		print("invalid choice")
 	else:
 		if category_choice == 'a':
@@ -114,10 +115,14 @@ while True:
 			print("you selected %s - nicknames") % (category_choice)
 			category_header = "Type the nickname of each state."
 			quiz_category = "Nicknames"
-		else:
+		elif category_choice == 'c':
 			print("you selected %s - years founded") % (category_choice)
 			category_header = "Type the year each state joined the union."
 			quiz_category = "Year Founded"
+		else:
+			print("you selected %s - order admitted") % (category_choice)
+			category_header = "Type the order in which each state was admitted to the union."
+			quiz_category = "Order Admitted"
 		break
 
 # prompt user to select how many states they'd like to drill
@@ -140,5 +145,7 @@ if category_choice == 'a':
 	quiz(capital, capitals)
 elif category_choice == 'b':
 	quiz(nickname, nicknames)
-else:
+elif category_choice == 'c':
 	quiz(year_founded, years_founded)
+else:
+	quiz(order, orders)
