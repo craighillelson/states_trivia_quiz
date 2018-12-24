@@ -1,150 +1,153 @@
+"""__doc__"""
+
 # imports
 import csv
 import random
 from datetime import datetime
 import time
 
-# define functions
-def print_return():
-    print("\n")
+RTN = lambda: '\n'
 
-def quiz(a, b):
+def quiz(item, lst):
     # define variables
-    print(category_header)
-    print_return()
+    """ quiz user """
+    print CATEGORY_HEADER
+    print RTN()
     correct = 0
     incorrect = 0
-    # for the number of states the user specified to drill, generate an equal number of random numbers less than 50
+    # for the number of states the user specified to drill, generate an equal number of
+    # random numbers less than 50
     for j in i:
-        print_return()
-        state = states[j]
+        print RTN()
+        state = STATES[j]
         state_formatted = "%s " % (state)
-        a = b[j]
+        item = lst[j]
         user_answer = raw_input(state_formatted)
-        # test the user's answer and respond 
-        if user_answer == a:
-            print("Correct. Good job!\n")
+        # test the user's answer and respond
+        if user_answer == item:
+            print "Correct. Good job!\n"
             correct = correct + 1
-            corrects.append(state)
+            CORRECTS.append(state)
         else:
             incorrect = incorrect + 1
-            incorrects.append(state)
+            INCORRECTS.append(state)
             while True:
-                see_the_answer_response = str(raw_input(see_the_answer+' (y or n): ')).lower().strip()
+                see_the_answer_response = str(raw_input(SEE_THE_ANSWER+
+                                                        ' (y or n): ')).lower().strip()
                 if see_the_answer_response not in ['y', 'n']:
-                    print("invalid choice")
+                    print "invalid choice"
                 # give user the correct answer
                 elif see_the_answer_response == 'y':
-                    print("The correct answer is %s") % (b[j])
+                    print "The correct answer is %s" % (lst[j])
                     break
                 else:
                     break
 
     # calculate and format percentage correct
-    percentage_correct =  float(correct) / float(user_choice)
+    percentage_correct = float(correct) / float(USER_CHOICE)
     percentage_formatted = "{0:.0%}".format(percentage_correct)
     print("Results: %s correct %s incorrect. %s\n") % (correct, incorrect, percentage_formatted)
-    
     # update user with their results. if user got any wrong, write the states missed to a text file
     current_timestamp = time.time()
     datetime_ts = datetime.fromtimestamp(current_timestamp).strftime('%Y-%m-%d_%H-%M')
     datetime_ts = "%s.txt" % (datetime_ts)
     with open(datetime_ts, 'w') as results:
         if incorrect > 0:
-            results.write("Category: "+ quiz_category+ "\n\n")
+            results.write("Category: "+ QUIZ_CATEGORY+ "\n\n")
             results.write("States to Review"+ "\n")
-            print("States to brush up on:")
-            for states_missed in incorrects:
+            print "States to brush up on:"
+            for states_missed in INCORRECTS:
                 results.write(states_missed+ "\n")
-                print(states_missed)
-            print_return()
-            print("Check %s to see where you can improve.") % (datetime_ts)
-            print_return()
+                print states_missed
+            print RTN()
+            print "Check %s to see where you can improve." % (datetime_ts)
+            print RTN()
         else:
             results.write("Great job!!! 100%")
-            print("Great job!!! 100%")
-            print_return()
+            print "Great job!!! 100%"
+            print RTN()
 
 # define lists to be populated later
-states = []
-capitals = []
-nicknames = []
-years_founded = []
-orders = []
-corrects = []
-incorrects = []
+STATES = []
+CAPITALS = []
+NICKNAMES = []
+YEARS_FOUNDED = []
+ORDERS = []
+CORRECTS = []
+INCORRECTS = []
 
 # import csv
 with open('states_trivia.csv') as f:
-    f_csv = csv.DictReader(f)
-    for row in f_csv:
+    F_CSV = csv.DictReader(f)
+    for row in F_CSV:
         capital = row['capital']
         nickname = row['nickname']
         year_founded = row['year founded']
         order = row['order']
-        states.append(row['state'])
-        capitals.append(row['capital'])
-        nicknames.append(row['nickname'])
-        years_founded.append(row['year founded'])
-        orders.append(row['order'])
+        STATES.append(row['state'])
+        CAPITALS.append(row['capital'])
+        NICKNAMES.append(row['nickname'])
+        YEARS_FOUNDED.append(row['year founded'])
+        ORDERS.append(row['order'])
 
 # get length of the list of states
-number_of_states = len(states)
+NUMBER_OF_STATES = len(STATES)
 
 # define questions
-category = "Would you like to drill a - capitals, b - nicknames, c - years founded, or d - order admitted? "
-question = "How many states would you like to drill in that category? (select an integer between 1 and %s) " % (number_of_states)
-see_the_answer = "Sorry, that's incorrect. Would you like to see the correct answer?"
+CATEGORY = """Would you like to drill a - capitals, b - nicknames, c - years founded,
+or d - order admitted? """
+QUESTION = """How many states would you like to drill in that category?
+(select an integer between 1 and %s) """ % (NUMBER_OF_STATES)
+SEE_THE_ANSWER = "Sorry, that's incorrect. Would you like to see the correct answer?"
 
 # define responses
-too_many = "Please select an integer less than %s " % (number_of_states)
-not_an_integer = "That won't work. Please enter an integer between 1 and 50. "
+TOO_MANY = "Please select an integer less than %s " % (NUMBER_OF_STATES)
+NOT_AN_INTEGER = "That won't work. Please enter an integer between 1 and 50. "
 
 # prompt user to select a category
 while True:
-    category_choice = str(raw_input(category)).lower().strip()
-    if category_choice not in ['a', 'b', 'c', 'd']:
-        print("invalid choice")
+    CATEGORY_CHOICE = str(raw_input(CATEGORY)).lower().strip()
+    if CATEGORY_CHOICE not in ['a', 'b', 'c', 'd']:
+        print "invalid choice"
     else:
-        if category_choice == 'a':
-            print("you selected %s - capitals") % (category_choice)
-            category_header = "Type the capital of each state."
-            quiz_category = "Capitals"
-        elif category_choice == 'b':
-            print("you selected %s - nicknames") % (category_choice)
-            category_header = "Type the nickname of each state."
-            quiz_category = "Nicknames"
-        elif category_choice == 'c':
-            print("you selected %s - years founded") % (category_choice)
-            category_header = "Type the year each state joined the union."
-            quiz_category = "Year Founded"
+        if CATEGORY_CHOICE == 'a':
+            print "you selected %s - capitals" % (CATEGORY_CHOICE)
+            CATEGORY_HEADER = "Type the capital of each state."
+            QUIZ_CATEGORY = "Capitals"
+        elif CATEGORY_CHOICE == 'b':
+            print "you selected %s - nicknames" % (CATEGORY_CHOICE)
+            CATEGORY_HEADER = "Type the nickname of each state."
+            QUIZ_CATEGORY = "Nicknames"
+        elif CATEGORY_CHOICE == 'c':
+            print "you selected %s - years founded" % (CATEGORY_CHOICE)
+            CATEGORY_HEADER = "Type the year each state joined the union."
+            QUIZ_CATEGORY = "Year Founded"
         else:
-            print("you selected %s - order admitted") % (category_choice)
-            category_header = "Type the order in which each state was admitted to the union."
-            quiz_category = "Order Admitted"
+            print "you selected %s - order admitted" % (CATEGORY_CHOICE)
+            CATEGORY_HEADER = "Type the order in which each state was admitted to the union."
+            QUIZ_CATEGORY = "Order Admitted"
         break
 
 # prompt user to select how many states they'd like to drill
 while True:
     try:
-        user_choice = int(raw_input(question))
+        USER_CHOICE = int(raw_input(QUESTION))
     except ValueError:
-        print("Please enter an integer.")
+        print "Please enter an integer."
         continue
-    if user_choice > number_of_states:
-        print("Please enter an integer between 1 and 50.")
+    if USER_CHOICE > NUMBER_OF_STATES:
+        print "Please enter an integer between 1 and 50."
     else:
         break
 
-# define i
-i = random.sample(range(number_of_states), int(user_choice))
+i = random.sample(range(NUMBER_OF_STATES), int(USER_CHOICE))
 
 # prompt user
-if category_choice == 'a':
-    quiz(capital, capitals)
-elif category_choice == 'b':
-    quiz(nickname, nicknames)
-elif category_choice == 'c':
-    quiz(year_founded, years_founded)
+if CATEGORY_CHOICE == 'a':
+    quiz(capital, CAPITALS)
+elif CATEGORY_CHOICE == 'b':
+    quiz(nickname, NICKNAMES)
+elif CATEGORY_CHOICE == 'c':
+    quiz(year_founded, YEARS_FOUNDED)
 else:
-    quiz(order, orders)
+    quiz(order, ORDERS)
