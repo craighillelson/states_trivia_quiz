@@ -30,7 +30,8 @@ def quiz(a, b):
             incorrect = incorrect + 1
             incorrects.append(state)
             while True:
-                see_the_answer_response = str(raw_input(see_the_answer+' (y or n): ')).lower().strip()
+                see_the_answer_response = str(raw_input(
+                	   see_the_answer+' (y or n): ')).lower().strip()
                 if see_the_answer_response not in ['y', 'n']:
                     print("invalid choice")
                 # give user the correct answer
