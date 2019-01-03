@@ -8,11 +8,13 @@ import time
 
 # define functions
 def print_return():
+    """ print return """
     print "\n"
 
 def quiz(a, b):
+    """ quiz user """
     # define variables
-    print category_header
+    print CATEGORY_HEADER
     print_return()
     correct = 0
     incorrect = 0
@@ -34,7 +36,7 @@ def quiz(a, b):
             INCORRECTS.append(state)
             while True:
                 see_the_answer_response = str(raw_input(
-                	   see_the_answer+' (y or n): ')).lower().strip()
+                    SEE_THE_ANSWER+' (y or n): ')).lower().strip()
                 if see_the_answer_response not in ['y', 'n']:
                     print "invalid choice"
                 # give user the correct answer
@@ -55,7 +57,7 @@ def quiz(a, b):
     datetime_ts = "%s.txt" % (datetime_ts)
     with open(datetime_ts, 'w') as results:
         if incorrect > 0:
-            results.write("Category: "+ quiz_category+ "\n\n")
+            results.write("Category: "+ QUIZ_CATEGORY+ "\n\n")
             results.write("States to Review"+ "\n")
             print "States to brush up on:"
             for states_missed in INCORRECTS:
@@ -93,64 +95,64 @@ with open('states_trivia.csv') as f:
         ORDERS.append(row['order'])
 
 # get length of the list of states
-number_of_states = len(STATES)
+NUMBER_OF_STATES = len(STATES)
 
 # define questions
-category = """Would you like to drill a - capitals, b - nicknames,
+CATEGORY = """Would you like to drill a - capitals, b - nicknames,
 c - years founded, or d - order admitted? """
-question = """How many states would you like to drill in that category?
- (select an integer between 1 and %s) """ % (number_of_states)
-see_the_answer = "Sorry, that's incorrect. Would you like to see the correct answer?"
+QUESTION = """How many states would you like to drill in that category?
+ (select an integer between 1 and %s) """ % (NUMBER_OF_STATES)
+SEE_THE_ANSWER = "Sorry, that's incorrect. Would you like to see the correct answer?"
 
 # define responses
-too_many = "Please select an integer less than %s " % (number_of_states)
-not_an_integer = "That won't work. Please enter an integer between 1 and 50. "
+TOO_MANY = "Please select an integer less than %s " % (NUMBER_OF_STATES)
+NOT_AN_INTEGER = "That won't work. Please enter an integer between 1 and 50. "
 
 # prompt user to select a category
 while True:
-    category_choice = str(raw_input(category)).lower().strip()
-    if category_choice not in ['a', 'b', 'c', 'd']:
+    CATEGORY_CHOICE = str(raw_input(CATEGORY)).lower().strip()
+    if CATEGORY_CHOICE not in ['a', 'b', 'c', 'd']:
         print "invalid choice"
     else:
-        if category_choice == 'a':
-            print("you selected %s - capitals") % (category_choice)
-            category_header = "Type the capital of each state."
-            quiz_category = "Capitals"
-        elif category_choice == 'b':
-            print "you selected %s - nicknames" % (category_choice)
-            category_header = "Type the nickname of each state."
-            quiz_category = "Nicknames"
-        elif category_choice == 'c':
-            print "you selected %s - years founded" % (category_choice)
-            category_header = "Type the year each state joined the union."
-            quiz_category = "Year Founded"
+        if CATEGORY_CHOICE == 'a':
+            print("you selected %s - capitals") % (CATEGORY_CHOICE)
+            CATEGORY_HEADER = "Type the capital of each state."
+            QUIZ_CATEGORY = "Capitals"
+        elif CATEGORY_CHOICE == 'b':
+            print "you selected %s - nicknames" % (CATEGORY_CHOICE)
+            CATEGORY_HEADER = "Type the nickname of each state."
+            QUIZ_CATEGORY = "Nicknames"
+        elif CATEGORY_CHOICE == 'c':
+            print "you selected %s - years founded" % (CATEGORY_CHOICE)
+            CATEGORY_HEADER = "Type the year each state joined the union."
+            QUIZ_CATEGORY = "Year Founded"
         else:
-            print "you selected %s - order admitted" % (category_choice)
-            category_header = "Type the order in which each state was admitted to the union."
-            quiz_category = "Order Admitted"
+            print "you selected %s - order admitted" % (CATEGORY_CHOICE)
+            CATEGORY_HEADER = "Type the order in which each state was admitted to the union."
+            QUIZ_CATEGORY = "Order Admitted"
         break
 
 # prompt user to select how many states they'd like to drill
 while True:
     try:
-        USER_CHOICE = int(raw_input(question))
+        USER_CHOICE = int(raw_input(QUESTION))
     except ValueError:
         print "Please enter an integer."
         continue
-    if USER_CHOICE > number_of_states:
+    if USER_CHOICE > NUMBER_OF_STATES:
         print "Please enter an integer between 1 and 50."
     else:
         break
 
 # define i
-i = random.sample(range(number_of_states), int(USER_CHOICE))
+i = random.sample(range(NUMBER_OF_STATES), int(USER_CHOICE))
 
 # prompt user
-if category_choice == 'a':
+if CATEGORY_CHOICE == 'a':
     quiz(capital, CAPITALS)
-elif category_choice == 'b':
+elif CATEGORY_CHOICE == 'b':
     quiz(nickname, NICKNAMES)
-elif category_choice == 'c':
+elif CATEGORY_CHOICE == 'c':
     quiz(year_founded, YEARS_FOUNDED)
 else:
     quiz(order, ORDERS)
