@@ -45,7 +45,7 @@ def quiz(a, b):
                     break
 
     # calculate and format percentage correct
-    percentage_correct = float(correct) / float(user_choice)
+    percentage_correct = float(correct) / float(USER_CHOICE)
     percentage_formatted = "{0:.0%}".format(percentage_correct)
     print("Results: %s correct %s incorrect. %s\n") % (correct, incorrect, percentage_formatted)
 
@@ -133,17 +133,17 @@ while True:
 # prompt user to select how many states they'd like to drill
 while True:
     try:
-        user_choice = int(raw_input(question))
+        USER_CHOICE = int(raw_input(question))
     except ValueError:
         print "Please enter an integer."
         continue
-    if user_choice > number_of_states:
+    if USER_CHOICE > number_of_states:
         print "Please enter an integer between 1 and 50."
     else:
         break
 
 # define i
-i = random.sample(range(number_of_states), int(user_choice))
+i = random.sample(range(number_of_states), int(USER_CHOICE))
 
 # prompt user
 if category_choice == 'a':
