@@ -33,10 +33,10 @@ def quiz(a, b):
                 see_the_answer_response = str(raw_input(
                 	   see_the_answer+' (y or n): ')).lower().strip()
                 if see_the_answer_response not in ['y', 'n']:
-                    print("invalid choice")
+                    print "invalid choice"
                 # give user the correct answer
                 elif see_the_answer_response == 'y':
-                    print("The correct answer is %s") % (b[j])
+                    print "The correct answer is %s" % (b[j])
                     break
                 else:
                     break
@@ -59,11 +59,11 @@ def quiz(a, b):
                 results.write(states_missed+ "\n")
                 print(states_missed)
             print_return()
-            print("Check %s to see where you can improve.") % (datetime_ts)
+            print "Check %s to see where you can improve." % (datetime_ts)
             print_return()
         else:
             results.write("Great job!!! 100%")
-            print("Great job!!! 100%")
+            print "Great job!!! 100%"
             print_return()
 
 # define lists to be populated later
@@ -105,22 +105,22 @@ not_an_integer = "That won't work. Please enter an integer between 1 and 50. "
 while True:
     category_choice = str(raw_input(category)).lower().strip()
     if category_choice not in ['a', 'b', 'c', 'd']:
-        print("invalid choice")
+        print "invalid choice"
     else:
         if category_choice == 'a':
             print("you selected %s - capitals") % (category_choice)
             category_header = "Type the capital of each state."
             quiz_category = "Capitals"
         elif category_choice == 'b':
-            print("you selected %s - nicknames") % (category_choice)
+            print "you selected %s - nicknames" % (category_choice)
             category_header = "Type the nickname of each state."
             quiz_category = "Nicknames"
         elif category_choice == 'c':
-            print("you selected %s - years founded") % (category_choice)
+            print "you selected %s - years founded" % (category_choice)
             category_header = "Type the year each state joined the union."
             quiz_category = "Year Founded"
         else:
-            print("you selected %s - order admitted") % (category_choice)
+            print "you selected %s - order admitted" % (category_choice)
             category_header = "Type the order in which each state was admitted to the union."
             quiz_category = "Order Admitted"
         break
@@ -130,10 +130,10 @@ while True:
     try:
         user_choice = int(raw_input(question))
     except ValueError:
-        print("Please enter an integer.")
+        print "Please enter an integer."
         continue
     if user_choice > number_of_states:
-        print("Please enter an integer between 1 and 50.")
+        print "Please enter an integer between 1 and 50."
     else:
         break
 
