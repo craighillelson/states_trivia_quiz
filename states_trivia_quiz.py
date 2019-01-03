@@ -12,25 +12,26 @@ def print_return():
 
 def quiz(a, b):
     # define variables
-    print(category_header)
+    print category_header
     print_return()
     correct = 0
     incorrect = 0
-    # for the number of states the user specified to drill, generate an equal number of random numbers less than 50
+    # for the number of states the user specified to drill,
+    # generate an equal number of random numbers less than 50
     for j in i:
         print_return()
         state = STATES[j]
         state_formatted = "%s " % (state)
         a = b[j]
         user_answer = raw_input(state_formatted)
-        # test the user's answer and respond 
+        # test the user's answer and respond
         if user_answer == a:
-            print("Correct. Good job!\n")
+            print "Correct. Good job!\n"
             correct = correct + 1
-            corrects.append(state)
+            CORRECTS.append(state)
         else:
             incorrect = incorrect + 1
-            incorrects.append(state)
+            INCORRECTS.append(state)
             while True:
                 see_the_answer_response = str(raw_input(
                 	   see_the_answer+' (y or n): ')).lower().strip()
@@ -44,10 +45,10 @@ def quiz(a, b):
                     break
 
     # calculate and format percentage correct
-    percentage_correct =  float(correct) / float(user_choice)
+    percentage_correct = float(correct) / float(user_choice)
     percentage_formatted = "{0:.0%}".format(percentage_correct)
     print("Results: %s correct %s incorrect. %s\n") % (correct, incorrect, percentage_formatted)
-   
+
     # update user with their results. if user got any wrong, write the states missed to a text file
     current_timestamp = time.time()
     datetime_ts = datetime.fromtimestamp(current_timestamp).strftime('%Y-%m-%d_%H-%M')
@@ -57,9 +58,9 @@ def quiz(a, b):
             results.write("Category: "+ quiz_category+ "\n\n")
             results.write("States to Review"+ "\n")
             print "States to brush up on:"
-            for states_missed in incorrects:
+            for states_missed in INCORRECTS:
                 results.write(states_missed+ "\n")
-                print(states_missed)
+                print states_missed
             print_return()
             print "Check %s to see where you can improve." % (datetime_ts)
             print_return()
@@ -70,12 +71,12 @@ def quiz(a, b):
 
 # define lists to be populated later
 STATES = []
-capitals = []
-nicknames = []
-years_founded = []
-orders = []
-corrects = []
-incorrects = []
+CAPITALS = []
+NICKNAMES = []
+YEARS_FOUNDED = []
+ORDERS = []
+CORRECTS = []
+INCORRECTS = []
 
 # import csv
 with open('states_trivia.csv') as f:
@@ -86,10 +87,10 @@ with open('states_trivia.csv') as f:
         year_founded = row['year founded']
         order = row['order']
         STATES.append(row['state'])
-        capitals.append(row['capital'])
-        nicknames.append(row['nickname'])
-        years_founded.append(row['year founded'])
-        orders.append(row['order'])
+        CAPITALS.append(row['capital'])
+        NICKNAMES.append(row['nickname'])
+        YEARS_FOUNDED.append(row['year founded'])
+        ORDERS.append(row['order'])
 
 # get length of the list of states
 number_of_states = len(STATES)
@@ -146,10 +147,10 @@ i = random.sample(range(number_of_states), int(user_choice))
 
 # prompt user
 if category_choice == 'a':
-    quiz(capital, capitals)
+    quiz(capital, CAPITALS)
 elif category_choice == 'b':
-    quiz(nickname, nicknames)
+    quiz(nickname, NICKNAMES)
 elif category_choice == 'c':
-    quiz(year_founded, years_founded)
+    quiz(year_founded, YEARS_FOUNDED)
 else:
-    quiz(order, orders)
+    quiz(order, ORDERS)
