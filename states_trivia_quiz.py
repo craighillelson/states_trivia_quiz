@@ -1,3 +1,5 @@
+""" __doc__ """
+
 # imports
 import csv
 import random
@@ -6,7 +8,7 @@ import time
 
 # define functions
 def print_return():
-    print("\n")
+    print "\n"
 
 def quiz(a, b):
     # define variables
