@@ -19,7 +19,7 @@ def quiz(a, b):
     # for the number of states the user specified to drill, generate an equal number of random numbers less than 50
     for j in i:
         print_return()
-        state = states[j]
+        state = STATES[j]
         state_formatted = "%s " % (state)
         a = b[j]
         user_answer = raw_input(state_formatted)
@@ -47,7 +47,7 @@ def quiz(a, b):
     percentage_correct =  float(correct) / float(user_choice)
     percentage_formatted = "{0:.0%}".format(percentage_correct)
     print("Results: %s correct %s incorrect. %s\n") % (correct, incorrect, percentage_formatted)
-    
+   
     # update user with their results. if user got any wrong, write the states missed to a text file
     current_timestamp = time.time()
     datetime_ts = datetime.fromtimestamp(current_timestamp).strftime('%Y-%m-%d_%H-%M')
@@ -56,7 +56,7 @@ def quiz(a, b):
         if incorrect > 0:
             results.write("Category: "+ quiz_category+ "\n\n")
             results.write("States to Review"+ "\n")
-            print("States to brush up on:")
+            print "States to brush up on:"
             for states_missed in incorrects:
                 results.write(states_missed+ "\n")
                 print(states_missed)
@@ -69,7 +69,7 @@ def quiz(a, b):
             print_return()
 
 # define lists to be populated later
-states = []
+STATES = []
 capitals = []
 nicknames = []
 years_founded = []
@@ -79,24 +79,26 @@ incorrects = []
 
 # import csv
 with open('states_trivia.csv') as f:
-    f_csv = csv.DictReader(f)
-    for row in f_csv:
+    F_CSV = csv.DictReader(f)
+    for row in F_CSV:
         capital = row['capital']
         nickname = row['nickname']
         year_founded = row['year founded']
         order = row['order']
-        states.append(row['state'])
+        STATES.append(row['state'])
         capitals.append(row['capital'])
         nicknames.append(row['nickname'])
         years_founded.append(row['year founded'])
         orders.append(row['order'])
 
 # get length of the list of states
-number_of_states = len(states)
+number_of_states = len(STATES)
 
 # define questions
-category = "Would you like to drill a - capitals, b - nicknames, c - years founded, or d - order admitted? "
-question = "How many states would you like to drill in that category? (select an integer between 1 and %s) " % (number_of_states)
+category = """Would you like to drill a - capitals, b - nicknames,
+c - years founded, or d - order admitted? """
+question = """How many states would you like to drill in that category?
+ (select an integer between 1 and %s) """ % (number_of_states)
 see_the_answer = "Sorry, that's incorrect. Would you like to see the correct answer?"
 
 # define responses
