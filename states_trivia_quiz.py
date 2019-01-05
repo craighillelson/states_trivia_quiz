@@ -11,7 +11,7 @@ def print_return():
     """ print return """
     print "\n"
 
-def quiz(a, b):
+def quiz(state, fact):
     """ quiz user """
     # define variables
     print CATEGORY_HEADER
@@ -24,10 +24,10 @@ def quiz(a, b):
         print_return()
         state = STATES[j]
         state_formatted = "%s " % (state)
-        a = b[j]
+        state = fact[j]
         user_answer = raw_input(state_formatted)
         # test the user's answer and respond
-        if user_answer == a:
+        if user_answer == state:
             print "Correct. Good job!\n"
             correct = correct + 1
             CORRECTS.append(state)
@@ -41,7 +41,7 @@ def quiz(a, b):
                     print "invalid choice"
                 # give user the correct answer
                 elif see_the_answer_response == 'y':
-                    print "The correct answer is %s" % (b[j])
+                    print "The correct answer is %s" % (fact[j])
                     break
                 else:
                     break
@@ -115,7 +115,7 @@ while True:
         print "invalid choice"
     else:
         if CATEGORY_CHOICE == 'a':
-            print("you selected %s - capitals") % (CATEGORY_CHOICE)
+            print "you selected %s - capitals" % (CATEGORY_CHOICE)
             CATEGORY_HEADER = "Type the capital of each state."
             QUIZ_CATEGORY = "Capitals"
         elif CATEGORY_CHOICE == 'b':
