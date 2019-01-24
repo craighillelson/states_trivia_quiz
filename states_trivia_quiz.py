@@ -10,6 +10,7 @@ import time
 def print_return():
     """ print return """
     print "\n"
+    
 
 def quiz(state, fact):
     """ quiz user """
