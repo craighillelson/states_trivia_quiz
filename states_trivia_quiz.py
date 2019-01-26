@@ -6,23 +6,22 @@ import random
 from datetime import datetime
 import time
 
-# define functions
-def print_return():
-    """ print return """
-    print "\n"
+# define lambda
+RTN = lambda: '\n'
     
 
+# def function
 def quiz(state, fact):
     """ quiz user """
     # define variables
     print CATEGORY_HEADER
-    print_return()
+    print RTN()
     correct = 0
     incorrect = 0
     # for the number of states the user specified to drill,
     # generate an equal number of random numbers less than 50
     for j in i:
-        print_return()
+        print RTN()
         state = STATES[j]
         state_formatted = "%s " % (state)
         state = fact[j]
@@ -64,13 +63,13 @@ def quiz(state, fact):
             for states_missed in INCORRECTS:
                 results.write(states_missed+ "\n")
                 print states_missed
-            print_return()
+            print RTN()
             print "Check %s to see where you can improve." % (datetime_ts)
-            print_return()
+            print RTN()
         else:
             results.write("Great job!!! 100%")
             print "Great job!!! 100%"
-            print_return()
+            print RTN()
 
 # define lists to be populated later
 STATES = []
