@@ -8,40 +8,42 @@ import time
 
 # define lambda
 RTN = lambda: '\n'
-    
+
 
 # def function
 def quiz(state, fact):
     """ quiz user """
     # define variables
-    print CATEGORY_HEADER
-    print RTN()
+    print(CATEGORY_HEADER)
+    print(RTN())
     correct = 0
     incorrect = 0
     # for the number of states the user specified to drill,
     # generate an equal number of random numbers less than 50
     for j in i:
-        print RTN()
+        print(RTN())
         state = STATES[j]
         state_formatted = "%s " % (state)
-        state = fact[j]
-        user_answer = raw_input(state_formatted)
+        # state = fact[j] # random number
+        state_fact = fact[j]
+        user_answer = input(state_formatted)
         # test the user's answer and respond
-        if user_answer == state:
-            print "Correct. Good job!\n"
+        if user_answer == state_fact:
+        # if user_answer == fact:
+            print("Correct. Good job!\n")
             correct = correct + 1
-            CORRECTS.append(state)
+            CORRECTS.append(state_formatted)
         else:
             incorrect = incorrect + 1
-            INCORRECTS.append(state)
+            INCORRECTS.append(state_formatted)
             while True:
-                see_the_answer_response = str(raw_input(
+                see_the_answer_response = str(input(
                     SEE_THE_ANSWER+' (y or n): ')).lower().strip()
                 if see_the_answer_response not in ['y', 'n']:
-                    print "invalid choice"
+                    print("invalid choice")
                 # give user the correct answer
                 elif see_the_answer_response == 'y':
-                    print "The correct answer is %s" % (fact[j])
+                    print(f"The correct answer is {fact[j]}")
                     break
                 else:
                     break
@@ -49,27 +51,33 @@ def quiz(state, fact):
     # calculate and format percentage correct
     percentage_correct = float(correct) / float(USER_CHOICE)
     percentage_formatted = "{0:.0%}".format(percentage_correct)
-    print("Results: %s correct %s incorrect. %s\n") % (correct, incorrect, percentage_formatted)
+    print(f"Results: {correct} correct {incorrect} incorrect." +
+          f"{percentage_formatted}\n")
 
-    # update user with their results. if user got any wrong, write the states missed to a text file
-    current_timestamp = time.time()
-    datetime_ts = datetime.fromtimestamp(current_timestamp).strftime('%Y-%m-%d_%H-%M')
+    # update user with their results. if user got any wrong,
+    # write the states missed to a text file
+    timestamp = time.time()
+    datetime_ts = datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d_%H-%M')
     datetime_ts = "%s.txt" % (datetime_ts)
     with open(datetime_ts, 'w') as results:
-        if incorrect > 0:
+        if incorrect:
             results.write("Category: "+ QUIZ_CATEGORY+ "\n\n")
             results.write("States to Review"+ "\n")
-            print "States to brush up on:"
+            print("States to brush up on:")
             for states_missed in INCORRECTS:
                 results.write(states_missed+ "\n")
-                print states_missed
-            print RTN()
-            print "Check %s to see where you can improve." % (datetime_ts)
-            print RTN()
+                print(states_missed)
+            print(RTN())
+            print(f"Check {datetime_ts} to see where you can improve.")
+            print(RTN())
         else:
             results.write("Great job!!! 100%")
-            print "Great job!!! 100%"
-            print RTN()
+            print("Great job!!! 100%")
+            print("You answered the following correctly:")
+            for state in CORRECTS:
+                print(state)
+            print(RTN())
+
 
 # define lists to be populated later
 STATES = []
@@ -98,53 +106,56 @@ with open('states_trivia.csv') as f:
 NUMBER_OF_STATES = len(STATES)
 
 # define questions
-CATEGORY = """Would you like to drill a - capitals, b - nicknames,
-c - years founded, or d - order admitted? """
-QUESTION = """How many states would you like to drill in that category?
- (select an integer between 1 and %s) """ % (NUMBER_OF_STATES)
-SEE_THE_ANSWER = "Sorry, that's incorrect. Would you like to see the correct answer?"
+CATEGORY = ("Would you like to drill a - capitals, b - nicknames," +
+            "c - years founded, or d - order admitted? ")
+QUESTION = (f"How many states would you like to drill in that category?" +
+            f"select an integer between 1 and {NUMBER_OF_STATES}) ")
+SEE_THE_ANSWER = ("Sorry, that's incorrect. Would you like to see the correct" +
+                  "answer?")
 
 # define responses
-TOO_MANY = "Please select an integer less than %s " % (NUMBER_OF_STATES)
+TOO_MANY = f"Please select an integer less than {NUMBER_OF_STATES} "
 NOT_AN_INTEGER = "That won't work. Please enter an integer between 1 and 50. "
 
 # prompt user to select a category
 while True:
-    CATEGORY_CHOICE = str(raw_input(CATEGORY)).lower().strip()
+    CATEGORY_CHOICE = str(input(CATEGORY)).lower().strip()
     if CATEGORY_CHOICE not in ['a', 'b', 'c', 'd']:
-        print "invalid choice"
+        print("invalid choice")
     else:
         if CATEGORY_CHOICE == 'a':
-            print "you selected %s - capitals" % (CATEGORY_CHOICE)
+            print(f"you selected {CATEGORY_CHOICE} - capitals")
             CATEGORY_HEADER = "Type the capital of each state."
             QUIZ_CATEGORY = "Capitals"
         elif CATEGORY_CHOICE == 'b':
-            print "you selected %s - nicknames" % (CATEGORY_CHOICE)
+            print(f"you selected {CATEGORY_CHOICE} - nicknames")
             CATEGORY_HEADER = "Type the nickname of each state."
             QUIZ_CATEGORY = "Nicknames"
         elif CATEGORY_CHOICE == 'c':
-            print "you selected %s - years founded" % (CATEGORY_CHOICE)
+            print(f"you selected {CATEGORY_CHOICE} - years founded")
             CATEGORY_HEADER = "Type the year each state joined the union."
             QUIZ_CATEGORY = "Year Founded"
         else:
-            print "you selected %s - order admitted" % (CATEGORY_CHOICE)
-            CATEGORY_HEADER = "Type the order in which each state was admitted to the union."
+            print(f"you selected {CATEGORY_CHOICE} - order admitted")
+            CATEGORY_HEADER = """Type the order in which each state was admitted
+                                 to the union."""
             QUIZ_CATEGORY = "Order Admitted"
         break
 
 # prompt user to select how many states they'd like to drill
 while True:
     try:
-        USER_CHOICE = int(raw_input(QUESTION))
+        USER_CHOICE = int(input(QUESTION))
     except ValueError:
-        print "Please enter an integer."
+        print("Please enter an integer.")
         continue
     if USER_CHOICE > NUMBER_OF_STATES:
-        print "Please enter an integer between 1 and 50."
+        print("Please enter an integer between 1 and 50.")
     else:
         break
 
-# define i
+# set i equal to a list of random numbers where the number of items in the list
+# is the number selected by the user and the range is the number of states
 i = random.sample(range(NUMBER_OF_STATES), int(USER_CHOICE))
 
 # prompt user
