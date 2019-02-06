@@ -23,19 +23,16 @@ def quiz(state, fact):
     for j in i:
         print(RTN())
         state = STATES[j]
-        state_formatted = "%s " % (state)
-        # state = fact[j] # random number
         state_fact = fact[j]
-        user_answer = input(state_formatted)
+        user_answer = input(f"{state} ")
         # test the user's answer and respond
         if user_answer == state_fact:
-        # if user_answer == fact:
             print("Correct. Good job!\n")
             correct = correct + 1
-            CORRECTS.append(state_formatted)
+            CORRECTS.append(state)
         else:
             incorrect = incorrect + 1
-            INCORRECTS.append(state_formatted)
+            INCORRECTS.append(state)
             while True:
                 see_the_answer_response = str(input(
                     SEE_THE_ANSWER+' (y or n): ')).lower().strip()
@@ -52,7 +49,7 @@ def quiz(state, fact):
     percentage_correct = float(correct) / float(USER_CHOICE)
     percentage_formatted = "{0:.0%}".format(percentage_correct)
     print(f"Results: {correct} correct {incorrect} incorrect." +
-          f"{percentage_formatted}\n")
+          f" {percentage_formatted}\n")
 
     # update user with their results. if user got any wrong,
     # write the states missed to a text file
@@ -74,8 +71,8 @@ def quiz(state, fact):
             results.write("Great job!!! 100%")
             print("Great job!!! 100%")
             print("You answered the following correctly:")
-            for state in CORRECTS:
-                print(state)
+            for us_state in CORRECTS:
+                print(us_state)
             print(RTN())
 
 
