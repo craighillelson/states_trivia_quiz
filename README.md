@@ -1,8 +1,7 @@
 # Overview
 
-states_trivia_quiz.py is a quiz game to test your knowledge of states' capitals, nicknames, etc.
-
-It runs in Python 3.7.2
+* "states_trivia_quiz.py" is a quiz game to test your knowledge of states' capitals, nicknames, etc.
+* It runs in Python 3.7.2
 
 ## Instructions
 
