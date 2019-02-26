@@ -7,7 +7,7 @@ from datetime import datetime
 import time
 
 # define lambda
-RTN = lambda: '\n'
+RTN = lambda: "\n"
 
 
 # def function
