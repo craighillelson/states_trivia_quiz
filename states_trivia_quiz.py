@@ -120,6 +120,7 @@ while True:
     if CATEGORY_CHOICE not in ['a', 'b', 'c', 'd']:
         print("invalid choice")
     else:
+        # restructure as a switch case statement
         if CATEGORY_CHOICE == 'a':
             print(f"you selected {CATEGORY_CHOICE} - capitals")
             CATEGORY_HEADER = "Type the capital of each state."
