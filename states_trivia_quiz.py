@@ -6,12 +6,14 @@ import random
 from datetime import datetime
 import time
 
+
 # define lambda
 RTN = lambda: "\n"
 
+
 '''
 def switch_case(argument):
-    """ switch case statement """
+    """Switch case statement."""
     switcher = {
         "a": "Capitals",
         "b": "Nicknames",
