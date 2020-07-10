@@ -24,7 +24,6 @@ def quiz(state, fact):
     """Quiz user."""
     print(f"{CATEGORY_HEADER}\n")
     for number in random_integers:
-        # print(RTN())
         state = STATES[number]
         state_fact = fact[number]
         user_answer = input(f"{state} ")
