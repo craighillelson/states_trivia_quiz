@@ -163,6 +163,4 @@ elif CATEGORY_CHOICE == 'c':
 else:
     quiz(order, ORDERS)
 
-# switch_case(CATEGORY_CHOICE)
-
-print("\n")
+print('\n')
