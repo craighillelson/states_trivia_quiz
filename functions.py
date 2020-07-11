@@ -30,7 +30,7 @@ with open('states_trivia.csv') as f:
 
 def calculate_percentage():
     """Calculate perecentage answered correctly."""
-    percentage_correct = float(len(CORRECTS)) / float(USER_CHOICE)
+    percentage_correct = float(len(CORRECTS)) / float(NUM_STATES)
     return '{0:.0%}'.format(percentage_correct)
 
 
@@ -52,14 +52,13 @@ def output_and_write_results(sing_or_plural, a):
 
 def quiz(state, fact):
     """Quiz user."""
-    random_integers = random.sample(range(len(STATES)), int(USER_CHOICE))
+    random_integers = random.sample(range(len(STATES)), int(NUM_STATES))
     for number in random_integers:
         state = STATES[number]
         state_fact = fact[number]
-        user_answer = input(f'{state}\n> ')
-        # test the user's answer and respond
+        user_answer = input(f'\n{state}\n> ')
         if user_answer == state_fact:
-            print('Correct. Good job!\n')
+            print('Correct. Good job!')
             CORRECTS.append(state)
         else:
             INCORRECTS.append(state)
@@ -68,7 +67,7 @@ def quiz(state, fact):
                                                           'see the correct '
                                                           'answer?\n> ')
                 if see_the_answer_response == 'yes':
-                    print(f'The correct answer is {fact[number]}\n')
+                    print(f'The correct answer is {fact[number]}')
                     break
                 else:
                     break
@@ -80,7 +79,6 @@ def quiz(state, fact):
     results_file = concat_results_file_name()
     with open(results_file, 'w') as results:
         if INCORRECTS:
-            # results.write(f'Category: {QUIZ_CATEGORY}\n\n')
             if len(INCORRECTS) > 1:
                 output_and_write_results('States', results)
             else:
@@ -92,3 +90,9 @@ def quiz(state, fact):
             print('You answered the following correctly:')
             for us_state in CORRECTS:
                 print(us_state)
+
+
+def switch_case(dct, argument):
+    """Switch case statement."""
+    dct
+    return dct.get(argument, 'nothing')
