@@ -3,20 +3,6 @@
 import functions
 import pyinputplus as pyip
 
-'''
-options = {
-    1: ['capital', 'CAPITALS'],
-    2: ['nickname', 'NICKNAMES'],
-    3: ['year_founded', 'YEARS_FOUNDED'],
-    4: ['order', 'ORDERS'],
-    }
-
-def switch_case(argument):
-    """Switch case statement."""
-    options
-    return options.get(argument, 'nothing')
-'''
-
 CATEGORY = ('\nWould you like to drill?\n\na - capitals\nb - nicknames\n'\
             'c - years founded\nd - order admitted\n\n> ')
 QUESTION = (f'How many states would you like to drill in that category?' \
@@ -54,7 +40,6 @@ while True:
                                           max=len(functions.STATES))
     break
 
-# prompt user
 print(f'\n{CATEGORY_HEADER}')
 if CATEGORY_CHOICE == 'a':
     functions.quiz(functions.capital, functions.CAPITALS)
