@@ -26,7 +26,7 @@ def quiz(state, fact):
     for number in random_integers:
         state = STATES[number]
         state_fact = fact[number]
-        user_answer = input(f"{state} ")
+        user_answer = input(f'{state}\n> ')
         # test the user's answer and respond
         if user_answer == state_fact:
             print("Correct. Good job!\n")
@@ -64,8 +64,7 @@ def quiz(state, fact):
             for states_missed in INCORRECTS:
                 results.write(f"{states_missed}\n")
                 print(states_missed)
-            print("\n")
-            print(f"Check {datetime_ts} to see where you can improve.")
+            print(f'\nCheck {datetime_ts} to see where you can improve.')
         else:
             results.write("Great job!!! 100%")
             print("Great job!!! 100%\n")
@@ -98,17 +97,17 @@ with open('states_trivia.csv') as f:
         ORDERS.append(row['order'])
 
 # define questions
-CATEGORY = ("\nWould you like to drill?\n\na - capitals\nb - nicknames\n"\
-            "c - years founded\nd - order admitted\n\n")
-QUESTION = (f"How many states would you like to drill in that category?" \
-            f" (select an integer between 1 and {len(STATES)})")
-SEE_THE_ANSWER = ("Sorry, that's incorrect. Would you like to see the correct" \
-                  "answer?")
+CATEGORY = ('\nWould you like to drill?\n\na - capitals\nb - nicknames\n'\
+            'c - years founded\nd - order admitted\n\n> ')
+QUESTION = (f'How many states would you like to drill in that category?' \
+            f' (select an integer between 1 and {len(STATES)})\n> ')
+SEE_THE_ANSWER = ('Sorry, that\'s incorrect. Would you like to see the '\
+                  'correct answer?')
 
 # define responses
-TOO_MANY = f"Please select an integer less than {len(STATES)} "
-NOT_AN_INTEGER = f"That won't work. Please enter an integer between 1 and "\
-                 f"{len(STATES)}. "
+TOO_MANY = f'Please select an integer less than {len(STATES)} '
+NOT_AN_INTEGER = f'That won\'t work. Please enter an integer between 1 and '\
+                 f'{len(STATES)}. '
 
 # prompt user to select a category
 while True:
@@ -118,22 +117,22 @@ while True:
     else:
         # restructure as a switch case statement
         if CATEGORY_CHOICE == 'a':
-            print(f"you selected {CATEGORY_CHOICE} - capitals\n")
-            CATEGORY_HEADER = "Type the capital of each state."
-            QUIZ_CATEGORY = "Capitals"
+            print(f'you selected {CATEGORY_CHOICE} - capitals\n')
+            CATEGORY_HEADER = 'Type the capital of each state.'
+            QUIZ_CATEGORY = 'Capitals'
         elif CATEGORY_CHOICE == 'b':
             print(f"you selected {CATEGORY_CHOICE} - nicknames\n")
-            CATEGORY_HEADER = "Type the nickname of each state."
-            QUIZ_CATEGORY = "Nicknames"
+            CATEGORY_HEADER = 'Type the nickname of each state.'
+            QUIZ_CATEGORY = 'Nicknames'
         elif CATEGORY_CHOICE == 'c':
             print(f"you selected {CATEGORY_CHOICE} - years founded\n")
-            CATEGORY_HEADER = "Type the year each state joined the union."
-            QUIZ_CATEGORY = "Year Founded"
+            CATEGORY_HEADER = 'Type the year each state joined the union.'
+            QUIZ_CATEGORY = 'Year Founded'
         else:
             print(f"you selected {CATEGORY_CHOICE} - order admitted\n")
             CATEGORY_HEADER = """Type the order in which each state was admitted
                                  to the union."""
-            QUIZ_CATEGORY = "Order Admitted"
+            QUIZ_CATEGORY = 'Order Admitted'
         break
 
 
@@ -142,10 +141,10 @@ while True:
     try:
         USER_CHOICE = int(input(QUESTION))
     except ValueError:
-        print("Please enter an integer.")
+        print('Please enter an integer.')
         continue
     if USER_CHOICE > len(STATES):
-        print("Please enter an integer between 1 and 50.")
+        print('Please enter an integer between 1 and 50.')
     else:
         break
 
