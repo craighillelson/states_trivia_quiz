@@ -22,7 +22,7 @@ def switch_case(argument):
 # def function
 def quiz(state, fact):
     """Quiz user."""
-    print(f"{CATEGORY_HEADER}\n")
+    print(f'{CATEGORY_HEADER}\n')
     for number in random_integers:
         state = STATES[number]
         state_fact = fact[number]
@@ -35,8 +35,8 @@ def quiz(state, fact):
             INCORRECTS.append(state)
             while True:
                 see_the_answer_response = str(input(
-                    SEE_THE_ANSWER+" (y or n): ")).lower().strip()
-                if see_the_answer_response not in ["y", "n"]:
+                    SEE_THE_ANSWER+' (y or n): ')).lower().strip()
+                if see_the_answer_response not in ['y', 'n']:
                     print("invalid choice")
                 # give user the correct answer
                 elif see_the_answer_response == 'y':
@@ -125,11 +125,11 @@ while True:
             CATEGORY_HEADER = 'Type the nickname of each state.'
             QUIZ_CATEGORY = 'Nicknames'
         elif CATEGORY_CHOICE == 'c':
-            print(f"you selected {CATEGORY_CHOICE} - years founded\n")
+            print(f'you selected {CATEGORY_CHOICE} - years founded\n')
             CATEGORY_HEADER = 'Type the year each state joined the union.'
             QUIZ_CATEGORY = 'Year Founded'
         else:
-            print(f"you selected {CATEGORY_CHOICE} - order admitted\n")
+            print(f'you selected {CATEGORY_CHOICE} - order admitted\n')
             CATEGORY_HEADER = """Type the order in which each state was admitted
                                  to the union."""
             QUIZ_CATEGORY = 'Order Admitted'
