@@ -14,8 +14,8 @@ ORDERS = []
 CORRECTS = []
 INCORRECTS = []
 
-with open('states_trivia.csv') as f:
-    F_CSV = csv.DictReader(f)
+with open('states_trivia.csv') as states_data:
+    F_CSV = csv.DictReader(states_data)
     for row in F_CSV:
         capital = row['capital']
         nickname = row['nickname']
@@ -34,6 +34,12 @@ def calculate_percentage():
     return '{0:.0%}'.format(percentage_correct)
 
 
+def output_overall_results(lst1, lst2, perc):
+    """Outputs user's results."""
+    print(f'Results: {len(lst1)} correct {len(lst2)} incorrect.'
+          f' {perc}\n')
+
+
 def concat_results_file_name():
     """Concatenate results file name."""
     timestamp = time.time()
@@ -41,12 +47,12 @@ def concat_results_file_name():
     return '%s.txt' % (datetime_ts)
 
 
-def output_and_write_results(sing_or_plural, a):
+def output_and_write_results(sing_or_plural, text_file):
     """Output results to the screen and write them to a text file. """
-    a.write(f'{sing_or_plural} to Review\n')
+    text_file.write(f'{sing_or_plural} to Review\n')
     print(f'{sing_or_plural} to brush up on:')
     for states_missed in INCORRECTS:
-        a.write(f'{states_missed}\n')
+        text_file.write(f'{states_missed}\n')
         print(states_missed)
 
 
@@ -73,8 +79,7 @@ def quiz(state, fact):
                     break
 
     percentage_formatted = calculate_percentage()
-    print(f'Results: {len(CORRECTS)} correct {len(INCORRECTS)} incorrect.' \
-          f' {percentage_formatted}\n')
+    output_overall_results(CORRECTS, INCORRECTS, percentage_formatted)
 
     results_file = concat_results_file_name()
     with open(results_file, 'w') as results:
@@ -85,11 +90,12 @@ def quiz(state, fact):
                 output_and_write_results('State', results)
             print(f'\nCheck {results_file} to see where you can improve.')
         else:
-            results.write('Great job!!! 100%')
+            results.write('Great job!!! 100%\n')
             print('Great job!!! 100%\n')
             print('You answered the following correctly:')
             for us_state in CORRECTS:
                 print(us_state)
+                results.write(f'{us_state}\n')
 
 
 def switch_case(dct, argument):
