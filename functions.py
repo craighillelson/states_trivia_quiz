@@ -34,12 +34,6 @@ def calculate_percentage():
     return '{0:.0%}'.format(percentage_correct)
 
 
-def output_overall_results(lst1, lst2, perc):
-    """Outputs user's results."""
-    print(f'Results: {len(lst1)} correct {len(lst2)} incorrect.'
-          f' {perc}\n')
-
-
 def concat_results_file_name():
     """Concatenate results file name."""
     timestamp = time.time()
@@ -54,6 +48,33 @@ def output_and_write_results(sing_or_plural, text_file):
     for states_missed in INCORRECTS:
         text_file.write(f'{states_missed}\n')
         print(states_missed)
+
+
+def output_overall_results(lst1, lst2, perc):
+    """Outputs user's results."""
+    print(f'Results: {len(lst1)} correct {len(lst2)} incorrect.'
+          f' {perc}\n')
+
+
+def prompt_user_for_category(dct):
+    """Output options and prompt user to select a category."""
+    print('\nChoose a category to drill.')
+    for num, category in dct.items():
+        print(num, category)
+    return pyip.inputInt('> ', min=1, max=len(dct))
+
+
+def process_user_choice(dct, a):
+    """Return the user's category choice."""
+    return switch_case(dct, a)
+
+
+def prompt_user_for_number_states():
+    """Prompt user for number of states they'd like to drill."""
+    HOW_MANY = (f'How many states would you like to drill in that category?' \
+                f'(select an integer between 1 and ' \
+                f'{len(STATES)})\n> ')
+    return pyip.inputInt(HOW_MANY, min=1, max=len(STATES))
 
 
 def quiz(state, fact):
