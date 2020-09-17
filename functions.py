@@ -110,8 +110,9 @@ def quiz(state, fact):
                 output_and_write_results("State", results)
             print(f"\nCheck {results_file} to see where you can improve.")
         else:
-            results.write("Great job!!! 100%\n")
-            print("Great job!!! 100%\n")
+            one_hundred = "Great job!!! 100%\n"
+            results.write(one_hundred)
+            print(one_hundred)
             print("You answered the following correctly:")
             for us_state in CORRECTS:
                 print(us_state)
