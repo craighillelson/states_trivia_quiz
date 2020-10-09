@@ -1,7 +1,6 @@
 """Quiz game based on US states trivia."""
 
 import functions
-import pyinputplus as pyip
 
 categories = {
     1: 'Capitals',
