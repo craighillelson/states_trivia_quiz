@@ -1,10 +1,10 @@
 """Functions."""
 
 import csv
-import pyinputplus as pyip
 import random
 import time
 from datetime import datetime
+import pyinputplus as pyip
 
 with open("states_trivia.csv", "r") as states_data:
     STATES = []
@@ -121,5 +121,4 @@ def quiz(state, fact):
 
 def switch_case(dct, argument):
     """Switch case statement."""
-    dct
     return dct.get(argument, "nothing")
