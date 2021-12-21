@@ -1,4 +1,4 @@
-state,capital,nickname,year founded,order
+state,capital,nickname,year_founded,order
 Alabama,Montgomery,The Yellowhammer State,1819,22
 Alaska,Juneau,The Last Frontier,1959,49
 Arizona,Phoenix,The Grand Canyon State,1912,48
@@ -22,7 +22,7 @@ Maryland,Annapolis,The Old Line State,1788,7
 Massachusetts,Boston,The Bay State,1788,6
 Michigan,Lansing,Great Lakes State,1837,26
 Minnesota,St. Paul,The North Star State,1858,32
-Mississippi,Jackson,The Magnolia State,1817,
+Mississippi,Jackson,The Magnolia State,1817,20
 Missouri,Jefferson City,The Show-Me State,1821,24
 Montana,Helena,The Treasure State,1889,41
 Nebraska,Lincoln,The Cornhusker State,1867,37
