@@ -6,7 +6,7 @@
 # Instructions
 
 * Download states_trivia_quiz.py and states_trivia.csv and save them to the same directory.
-* In Terminal, navigate to the same directory and type "python3.8 states_trivia_quiz.py"
+* In Terminal, navigate to the same directory and type "python3 states_trivia_quiz.py"
 
 # Requirement
 
